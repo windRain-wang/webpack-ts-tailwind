@@ -27,4 +27,5 @@ module.exports = merge(config, {
     removeEmptyChunks: false,
     splitChunks: false
   },
+  stats: 'summary'
 });

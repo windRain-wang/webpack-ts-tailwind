@@ -2,10 +2,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 module.exports = {
   context: __dirname,
-  entry: "./src/index.ts",
+  // entry: ["./src/index.css", "./src/index.ts"],
+  // entry: "./src/index.ts",
+  entry: ["./src/backend.css", "./src/index.ts"],
   output: {
     filename: '[name].[contenthash].js',
-    clean: true,
+    clean: true
   },
   module: {
     rules: [
