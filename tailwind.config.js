@@ -1,7 +1,13 @@
 module.exports = {
-  // purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"], 
-  purge: [], 
-  darkMode: false, // or 'media' or 'class'
+  purge: {
+    mode: "all",
+    content: ["./src/**/*.{vue,js,ts,jsx,tsx}"],
+    options: {
+      keyframes: true,
+      fontFace: true,
+    },
+  },
+  darkMode: false,
   theme: {
     extend: {},
   },

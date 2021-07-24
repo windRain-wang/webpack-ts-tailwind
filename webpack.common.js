@@ -1,13 +1,13 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const mode = process.env.NODE_ENV || "production";
 module.exports = {
   context: __dirname,
-  // entry: ["./src/index.css", "./src/index.ts"],
-  // entry: "./src/index.ts",
-  entry: ["./src/backend.css", "./src/index.ts"],
+  entry: "./src/index.ts",
+  mode,
   output: {
-    filename: '[name].[contenthash].js',
-    clean: true
+    filename: "[name].[contenthash].js",
+    clean: true,
   },
   module: {
     rules: [
@@ -16,7 +16,7 @@ module.exports = {
         exclude: "/node_modules",
         loader: "ts-loader",
         options: {
-            transpileOnly: true,
+          transpileOnly: true,
         },
       },
       {
@@ -36,9 +36,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "更换主题(webpack + postcss + tailwindcss + var)",
     }),
-    new ForkTsCheckerWebpackPlugin()
+    new ForkTsCheckerWebpackPlugin(),
   ],
   optimization: {
-    runtimeChunk: 'single'
-  }
+    runtimeChunk: "single",
+  },
 };

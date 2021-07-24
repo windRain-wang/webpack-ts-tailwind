@@ -2,13 +2,12 @@ const { merge } = require("webpack-merge");
 const config = require("./webpack.common.js");
 
 module.exports = merge(config, {
-  mode: "development",
   output: {
-    pathinfo: false
+    pathinfo: false,
   },
   devServer: {
     contentBase: "./dist",
-    hot: true
+    hot: true,
   },
   devtool: "eval-cheap-module-source-map",
   module: {
@@ -16,16 +15,16 @@ module.exports = merge(config, {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader", "postcss-loader"],
-      }
-    ]
+      },
+    ],
   },
   resolve: {
-    symlinks: false
+    symlinks: false,
   },
   optimization: {
     removeAvailableModules: false,
     removeEmptyChunks: false,
-    splitChunks: false
+    splitChunks: false,
   },
-  stats: 'summary'
+  stats: "summary",
 });

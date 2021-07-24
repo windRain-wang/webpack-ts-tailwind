@@ -1,21 +1,23 @@
 const { merge } = require("webpack-merge");
 const config = require("./webpack.common.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = (env) => {
   const isAnalyzing = env.analyzer;
   return merge(config, {
-    mode: "production",
     plugins: ((plugins) => {
-      plugins.push(new MiniCssExtractPlugin({
-        filename: "[name].[contenthash].css",
-        chunkFilename: "[id].[contenthash].css"
-      }))
+      plugins.push(
+        new MiniCssExtractPlugin({
+          filename: "[name].[contenthash].css",
+          chunkFilename: "[id].[contenthash].css",
+        })
+      );
 
       if (isAnalyzing) {
-        plugins.push(new BundleAnalyzerPlugin())
+        plugins.push(new BundleAnalyzerPlugin());
       }
 
       return plugins;
@@ -29,10 +31,8 @@ module.exports = (env) => {
       ],
     },
     optimization: {
-      moduleIds: 'deterministic',
-      minimizer: [
-        new CssMinimizerPlugin()
-      ],
+      moduleIds: "deterministic",
+      minimizer: [new CssMinimizerPlugin()],
       splitChunks: {
         cacheGroups: {
           vendor: {
@@ -42,6 +42,6 @@ module.exports = (env) => {
           },
         },
       },
-    }
+    },
   });
 };
